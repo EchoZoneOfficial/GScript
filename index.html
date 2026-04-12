@@ -38,6 +38,27 @@
             }
         }
 
+        /* Эффект появления надписи с царапинами */
+        @keyframes scratchEffect {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        h1 {
+            font-size: 50px;
+            font-weight: bold;
+            display: inline-block;
+            overflow: hidden;
+            border-right: 5px solid #ff1a1a;
+            animation: scratchEffect 2s steps(30) 1;
+            white-space: nowrap;
+            padding-right: 10px;
+        }
+
         /* Кнопки */
         .button {
             background: linear-gradient(135deg, #ff1a1a, #00d4ff);
