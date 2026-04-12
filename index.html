@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GScript</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #0b0b0b;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #ff1a1a;
+        }
+
+        h3 {
+            color: #ffffff;
+        }
+
+        .button {
+            background-color: #ff1a1a;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #00d4ff;
+            box-shadow: 0 0 15px #00d4ff;
+        }
+
+        .code-block {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 18px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            margin: 20px auto;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .code-block:hover {
+            background-color: #2d2d2d;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+        }
+
+        .socials a {
+            color: #00d4ff;
+            font-size: 18px;
+            margin: 10px;
+            text-decoration: none;
+        }
+
+        .socials a:hover {
+            text-decoration: underline;
+        }
+
+        .cursor {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff1a1a;
+            border-radius: 50%;
+            pointer-events: none;
+            transition: all 0.1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GScript</h1>
+        <p>Простой язык программирования для создания игр</p>
+    </header>
+
+    <section>
+        <h2>Как начать с GScript</h2>
+        <ol>
+            <li>Скачайте GScript по ссылке ниже</li>
+            <li>Создайте файл с именем <code>main.gs</code></li>
+            <li>Напишите первый код и запустите его</li>
+        </ol>
+        <a href="path-to-your-download-link" class="button">Скачать сейчас</a>
+    </section>
+
+    <section>
+        <h2>Примеры кода</h2>
+        <pre class="code-block">
+spawn(Enemy)
+player.hp = 100
+if (player.hp < 50) {
+    heal(player)
+}
+</pre>
+    </section>
+
+    <section>
+        <h2>Документация</h2>
+        <h3>Переменные</h3>
+        <p>Переменные в GScript хранят данные, такие как числа или текст. Пример:</p>
+        <pre class="code-block">hp = 100</pre>
+
+        <h3>Команды</h3>
+        <ul>
+            <li><code>spawn(Enemy)</code>: Создаёт врага в игровом мире</li>
+            <li><code>move(player, direction)</code>: Перемещает игрока в заданном направлении</li>
+        </ul>
+    </section>
+
+    <section class="socials">
+        <h2>Следите за нами</h2>
+        <a href="https://t.me/GScriptOfficial" target="_blank">Telegram</a>
+    </section>
+
+    <footer>
+        <p>Контакты: <a href="mailto:urkinaelena01@gmail.ru">urkinaelena01@gmail.ru</a></p>
+    </footer>
+
+    <script>
+        const cursor = document.createElement('div');
+        cursor.classList.add('cursor');
+        document.body.appendChild(cursor);
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.pageX - 10 + 'px';
+            cursor.style.top = e.pageY - 10 + 'px';
+        });
+    </script>
+</body>
+</html>
