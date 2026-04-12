@@ -140,9 +140,53 @@
             background-color: #00d4ff;
             color: #000000;
         }
+
+        /* Навигационное меню */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1a1a1a;
+            padding: 10px;
+            z-index: 10;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            font-size: 18px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #00d4ff;
+        }
     </style>
 </head>
 <body>
+    <!-- Навигационное меню -->
+    <nav>
+        <ul>
+            <li><a href="#how-to-start">Как начать</a></li>
+            <li><a href="#examples">Примеры кода</a></li>
+            <li><a href="#documentation">Документация</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </nav>
+
     <!-- Заголовок сайта -->
     <header>
         <h1>GScript</h1>
@@ -150,7 +194,7 @@
     </header>
 
     <!-- Секция "Как начать" -->
-    <section class="section">
+    <section id="how-to-start" class="section">
         <h2>Как начать с GScript</h2>
         <ol>
             <li>Скачайте GScript по ссылке ниже</li>
@@ -161,7 +205,7 @@
     </section>
 
     <!-- Секция с примерами кода -->
-    <section class="section">
+    <section id="examples" class="section">
         <h2>Примеры кода</h2>
         <pre class="code-block">
 spawn(Enemy)
@@ -173,21 +217,31 @@ if (player.hp < 50) {
     </section>
 
     <!-- Секция с документацией -->
-    <section class="section">
+    <section id="documentation" class="section">
         <h2>Документация</h2>
         <h3>Переменные</h3>
         <p>Переменные в GScript хранят данные, такие как числа или текст. Пример:</p>
         <pre class="code-block">hp = 100</pre>
 
-        <h3>Команды</h3>
-        <ul>
-            <li><code>spawn(Enemy)</code>: Создаёт врага в игровом мире</li>
-            <li><code>move(player, direction)</code>: Перемещает игрока в заданном направлении</li>
-        </ul>
+        <h3>Операторы</h3>
+        <p>Операторы позволяют выполнять операции с данными. Пример:</p>
+        <pre class="code-block">if (hp > 50) { heal(player); }</pre>
+
+        <h3>Условия</h3>
+        <p>Условия позволяют проверять состояния в игре. Пример:</p>
+        <pre class="code-block">if (player.hp < 50) {
+    heal(player)
+}</pre>
+
+        <h3>Функции</h3>
+        <p>Функции — это блоки кода, которые можно вызывать. Пример:</p>
+        <pre class="code-block">function heal(player) {
+    player.hp += 10
+}</pre>
     </section>
 
     <!-- Секция с ссылкой на Telegram -->
-    <section class="socials">
+    <section id="contact" class="socials">
         <h2>Следите за нами</h2>
         <a href="https://t.me/GScriptOfficial" target="_blank">Telegram</a>
     </section>
