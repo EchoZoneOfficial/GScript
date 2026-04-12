@@ -14,29 +14,43 @@
             overflow-x: hidden;
         }
 
-        h1, h2 {
+        h1, h2, h3 {
             text-align: center;
             color: #ff1a1a;
+            animation: fadeIn 1s ease-out;
         }
 
-        h3 {
-            color: #ffffff;
+        p, li, code {
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .button {
-            background-color: #ff1a1a;
+            background: linear-gradient(135deg, #ff1a1a, #00d4ff);
             color: white;
             padding: 15px 30px;
             border-radius: 50px;
             border: none;
             font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s, box-shadow 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
             text-decoration: none;
+            display: inline-block;
         }
 
         .button:hover {
             background-color: #00d4ff;
+            transform: scale(1.1);
             box-shadow: 0 0 15px #00d4ff;
         }
 
@@ -51,6 +65,8 @@
             margin: 20px auto;
             width: 90%;
             max-width: 800px;
+            animation: delayFadeIn 1s ease-in-out;
+            animation-delay: 0.5s;
         }
 
         .code-block:hover {
@@ -58,15 +74,26 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
         }
 
+        @keyframes delayFadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
         .socials a {
             color: #00d4ff;
             font-size: 18px;
             margin: 10px;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
 
         .socials a:hover {
             text-decoration: underline;
+            color: #ff1a1a;
         }
 
         .cursor {
@@ -78,6 +105,29 @@
             pointer-events: none;
             transition: all 0.1s ease-out;
         }
+
+        .section {
+            background: linear-gradient(135deg, #1b1b1b, #2c2c2c);
+            padding: 20px;
+            border-radius: 8px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        select {
+            background: #1a1a1a;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        select:hover {
+            background-color: #00d4ff;
+            color: #000000;
+        }
     </style>
 </head>
 <body>
@@ -86,7 +136,7 @@
         <p>Простой язык программирования для создания игр</p>
     </header>
 
-    <section>
+    <section class="section">
         <h2>Как начать с GScript</h2>
         <ol>
             <li>Скачайте GScript по ссылке ниже</li>
@@ -96,7 +146,7 @@
         <a href="path-to-your-download-link" class="button">Скачать сейчас</a>
     </section>
 
-    <section>
+    <section class="section">
         <h2>Примеры кода</h2>
         <pre class="code-block">
 spawn(Enemy)
@@ -107,7 +157,7 @@ if (player.hp < 50) {
 </pre>
     </section>
 
-    <section>
+    <section class="section">
         <h2>Документация</h2>
         <h3>Переменные</h3>
         <p>Переменные в GScript хранят данные, такие как числа или текст. Пример:</p>
@@ -137,6 +187,26 @@ if (player.hp < 50) {
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.pageX - 10 + 'px';
             cursor.style.top = e.pageY - 10 + 'px';
+        });
+
+        // Пример динамической смены кода
+        const exampleSelect = document.createElement('select');
+        exampleSelect.innerHTML = `
+            <option value="spawnEnemy">Создание врага</option>
+            <option value="movePlayer">Перемещение игрока</option>
+        `;
+        document.body.appendChild(exampleSelect);
+
+        const codeExample = document.createElement('pre');
+        document.body.appendChild(codeExample);
+
+        exampleSelect.addEventListener('change', function() {
+            const example = this.value;
+            if (example === 'spawnEnemy') {
+                codeExample.innerHTML = 'spawn(Enemy)';
+            } else if (example === 'movePlayer') {
+                codeExample.innerHTML = 'move(player, direction)';
+            }
         });
     </script>
 </body>
