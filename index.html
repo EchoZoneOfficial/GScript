@@ -2,53 +2,54 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GScript</title>
 
 <style>
 body {
-    margin: 0;
-    font-family: Arial;
-    background: #0b0b0b;
-    color: white;
+    margin:0;
+    background:#0b0b0b;
+    color:white;
+    font-family:Arial;
 }
 
-h1,h2,h3 {
-    color: #ff1a1a;
-    text-align: center;
+h1 {
+    text-align:center;
+    font-size:60px;
+    color:red;
+    margin-top:100px;
+    text-shadow:0 0 20px red;
 }
 
 .section {
-    background: #1a1a1a;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 10px;
+    margin:40px;
+    padding:30px;
+    background:#111;
+    border-radius:15px;
 }
 
 .code {
-    background: black;
-    padding: 15px;
-    border-radius: 8px;
-    font-family: monospace;
-    white-space: pre;
+    background:black;
+    padding:20px;
+    border-radius:10px;
+    font-family:monospace;
+    color:#00ff88;
 }
 
 nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: #111;
-    padding: 10px;
+    position:fixed;
+    width:100%;
+    background:black;
+    padding:15px;
 }
 
 nav a {
-    color: white;
-    margin: 10px;
-    text-decoration: none;
+    color:white;
+    margin:15px;
+    text-decoration:none;
 }
 
 nav a:hover {
-    color: red;
+    color:red;
 }
 </style>
 </head>
@@ -56,28 +57,14 @@ nav a:hover {
 <body>
 
 <nav>
-<a href="#start">Старт</a>
-<a href="#examples">Примеры</a>
-<a href="#docs">Документация</a>
-<a href="#contact">Контакты</a>
+<a href="#ex">Пример</a>
+<a href="#doc">Документация</a>
 </nav>
 
-<br><br><br>
+<h1>🔥 GScript 🔥</h1>
 
-<h1>GScript</h1>
-<p style="text-align:center;">Игровой язык программирования</p>
-
-<div id="start" class="section">
-<h2>Как начать</h2>
-<ol>
-<li>Скачай GScript</li>
-<li>Создай файл main.gs</li>
-<li>Запусти его</li>
-</ol>
-</div>
-
-<div id="examples" class="section">
-<h2>Пример GScript</h2>
+<div id="ex" class="section">
+<h2>Пример</h2>
 
 <div class="code">
 player.hp = 40
@@ -94,29 +81,11 @@ move player forward
 
 </div>
 
-<div id="docs" class="section">
-<h2>Документация</h2>
+<div id="doc" class="section">
+<h2>Команды</h2>
 
-<h3>Переменные</h3>
 <div class="code">
 set hp 100
-</div>
-
-<h3>Объекты</h3>
-<div class="code">
-player.hp = 100
-enemy.hp = 50
-</div>
-
-<h3>Условия</h3>
-<div class="code">
-when player.hp < 50 {
-    say "LOW HP!"
-}
-</div>
-
-<h3>Команды</h3>
-<div class="code">
 spawn Enemy
 move player forward
 heal player
@@ -124,19 +93,6 @@ damage player 20
 say "Hello"
 </div>
 
-<h3>Циклы</h3>
-<div class="code">
-loop 3 {
-    spawn Enemy
-}
-</div>
-
-</div>
-
-<div id="contact" class="section">
-<h2>Контакты</h2>
-<p>Telegram: https://t.me/GScriptOfficial</p>
-<p>Email: gscriptofficial@mail.ru</p>
 </div>
 
 </body>
