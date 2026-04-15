@@ -1,99 +1,308 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<title>GScript</title>
 
-<style>
-body {
-    margin:0;
-    background:#0b0b0b;
-    color:white;
-    font-family:Arial;
-}
+<!DOCTYPE html>  <html lang="ru">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>GScript</title>  
+    <style>  
+        /* Общие стили */  
+        body {  
+            margin: 0;  
+            padding: 0;  
+            font-family: 'Arial', sans-serif;  
+            background-color: #0b0b0b;  
+            color: #ffffff;  
+            overflow-x: hidden;  
+        }  /* Заголовки */  
+    h1, h2, h3 {  
+        text-align: center;  
+        color: #ff1a1a;  
+        animation: fadeIn 1s ease-out;  
+    }  
 
-h1 {
-    text-align:center;
-    font-size:60px;
-    color:red;
-    margin-top:100px;
-    text-shadow:0 0 20px red;
-}
+    p, li, code {  
+        animation: fadeIn 1.2s ease-out;  
+    }  
 
-.section {
-    margin:40px;
-    padding:30px;
-    background:#111;
-    border-radius:15px;
-}
+    /* Анимация для появления элементов */  
+    @keyframes fadeIn {  
+        0% {  
+            opacity: 0;  
+            transform: translateY(50px);  
+        }  
+        100% {  
+            opacity: 1;  
+            transform: translateY(0);  
+        }  
+    }  
 
-.code {
-    background:black;
-    padding:20px;
-    border-radius:10px;
-    font-family:monospace;
-    color:#00ff88;
-}
+    /* Эффект появления надписи с царапинами */  
+    @keyframes scratchEffect {  
+        0% {  
+            width: 0;  
+        }  
+        100% {  
+            width: 100%;  
+        }  
+    }  
 
-nav {
-    position:fixed;
-    width:100%;
-    background:black;
-    padding:15px;
-}
+    h1 {  
+        font-size: 50px;  
+        font-weight: bold;  
+        display: inline-block;  
+        overflow: hidden;  
+        border-right: 5px solid #ff1a1a;  
+        animation: scratchEffect 2s steps(30) 1;  
+        white-space: nowrap;  
+        padding-right: 10px;  
+    }  
 
-nav a {
-    color:white;
-    margin:15px;
-    text-decoration:none;
-}
+    /* Кнопки */  
+    .button {  
+        background: linear-gradient(135deg, #ff1a1a, #00d4ff);  
+        color: white;  
+        padding: 15px 30px;  
+        border-radius: 50px;  
+        border: none;  
+        font-size: 16px;  
+        cursor: pointer;  
+        transition: background-color 0.3s, transform 0.3s;  
+        text-decoration: none;  
+        display: inline-block;  
+        animation: fadeIn 1s ease-out;  
+    }  
 
-nav a:hover {
-    color:red;
-}
+    .button:hover {  
+        background-color: #00d4ff;  
+        transform: scale(1.1);  
+        box-shadow: 0 0 15px #00d4ff;  
+    }  
+
+    /* Блоки с кодом */  
+    .code-block {  
+        background-color: #1a1a1a;  
+        color: #ffffff;  
+        padding: 20px;  
+        border-radius: 10px;  
+        font-family: 'JetBrains Mono', monospace;  
+        font-size: 18px;  
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);  
+        margin: 20px auto;  
+        width: 90%;  
+        max-width: 800px;  
+        animation: delayFadeIn 1s ease-in-out;  
+        animation-delay: 0.5s;  
+    }  
+
+    .code-block:hover {  
+        background-color: #2d2d2d;  
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);  
+    }  
+
+    /* Анимация для кода */  
+    @keyframes delayFadeIn {  
+        0% {  
+            opacity: 0;  
+        }  
+        100% {  
+            opacity: 1;  
+        }  
+    }  
+
+    /* Ссылки на социальные сети */  
+    .socials a {  
+        color: #00d4ff;  
+        font-size: 18px;  
+        margin: 10px;  
+        text-decoration: none;  
+        transition: color 0.3s ease;  
+    }  
+
+    .socials a:hover {  
+        text-decoration: underline;  
+        color: #ff1a1a;  
+    }  
+
+    /* Курсор */  
+    .cursor {  
+        position: absolute;  
+        width: 20px;  
+        height: 20px;  
+        background-color: #ff1a1a;  
+        border-radius: 50%;  
+        pointer-events: none;  
+        transition: all 0.1s ease-out;  
+    }  
+
+    /* Секция с фоном */  
+    .section {  
+        background: linear-gradient(135deg, #1b1b1b, #2c2c2c);  
+        padding: 20px;  
+        border-radius: 8px;  
+        animation: fadeIn 1s ease-out;  
+    }  
+
+    /* Стиль для выпадающего списка */  
+    select {  
+        background: #1a1a1a;  
+        color: white;  
+        padding: 10px;  
+        border-radius: 5px;  
+        border: none;  
+        font-size: 16px;  
+        cursor: pointer;  
+        margin-top: 20px;  
+        transition: background-color 0.3s ease;  
+    }  
+
+    select:hover {  
+        background-color: #00d4ff;  
+        color: #000000;  
+    }  
+
+    /* Навигационное меню */  
+    nav {  
+        position: fixed;  
+        top: 0;  
+        left: 0;  
+        width: 100%;  
+        background-color: #1a1a1a;  
+        padding: 10px;  
+        z-index: 10;  
+    }  
+
+    nav ul {  
+        list-style-type: none;  
+        display: flex;  
+        justify-content: center;  
+        margin: 0;  
+        padding: 0;  
+    }  
+
+    nav ul li {  
+        margin: 0 20px;  
+    }  
+
+    nav ul li a {  
+        color: #ffffff;  
+        font-size: 18px;  
+        text-decoration: none;  
+        transition: color 0.3s ease;  
+    }  
+
+    nav ul li a:hover {  
+        color: #00d4ff;  
+    }  
 </style>
-</head>
 
-<body>
+</head>  
+<body>  
+    <!-- Навигационное меню -->  
+    <nav>  
+        <ul>  
+            <li><a href="#how-to-start">Как начать</a></li>  
+            <li><a href="#examples">Примеры кода</a></li>  
+            <li><a href="#documentation">Документация</a></li>  
+            <li><a href="#contact">Контакты</a></li>  
+        </ul>  
+    </nav>  <!-- Заголовок сайта -->  
+<header>  
+    <h1>GScript</h1>  
+    <p>Простой язык программирования для создания игр</p>  
+</header>  
 
-<nav>
-<a href="#ex">Пример</a>
-<a href="#doc">Документация</a>
-</nav>
+<!-- Секция "Как начать" -->  
+<section id="how-to-start" class="section">  
+    <h2>Как начать с GScript</h2>  
+    <ol>  
+        <li>Скачайте GScript по ссылке ниже</li>  
+        <li>Создайте файл с именем <code>main.gs</code></li>  
+        <li>Напишите первый код и запустите его</li>  
+    </ol>  
+    <a href="path-to-your-download-link" class="button">Скачать сейчас</a>  
+</section>  
 
-<h1>🔥 GScript 🔥</h1>
+<!-- Секция с примерами кода -->  
+<section id="examples" class="section">  
+    <h2>Примеры кода</h2>  
+    <pre class="code-block">
 
-<div id="ex" class="section">
-<h2>Пример</h2>
-
-<div class="code">
-player.hp = 40
-
-when player.hp < 50 {
-    say "LOW HP!"
-    spawn Enemy
+spawn(Enemy)
+player.hp = 100
+if (player.hp < 50) {
+heal(player)
 }
+</pre>
+</section>
 
-damage player 20
-heal player
-move player forward
-</div>
+<!-- Секция с документацией -->  
+<section id="documentation" class="section">  
+    <h2>Документация</h2>  
+    <h3>Переменные</h3>  
+    <p>Переменные в GScript хранят данные, такие как числа или текст. Пример:</p>  
+    <pre class="code-block">hp = 100</pre>  
 
-</div>
+    <h3>Операторы</h3>  
+    <p>Операторы позволяют выполнять операции с данными. Пример:</p>  
+    <pre class="code-block">if (hp > 50) { heal(player); }</pre>  
 
-<div id="doc" class="section">
-<h2>Команды</h2>
+    <h3>Условия</h3>  
+    <p>Условия позволяют проверять состояния в игре. Пример:</p>  
+    <pre class="code-block">if (player.hp < 50) {  
+heal(player)
 
-<div class="code">
-set hp 100
-spawn Enemy
-move player forward
-heal player
-damage player 20
-say "Hello"
-</div>
+}</pre>
 
-</div>
+<h3>Функции</h3>  
+    <p>Функции — это блоки кода, которые можно вызывать. Пример:</p>  
+    <pre class="code-block">function heal(player) {  
+player.hp += 10
 
-</body>
+}</pre>
+</section>
+
+<!-- Секция с ссылкой на Telegram -->  
+<section id="contact" class="socials">  
+    <h2>Следите за нами</h2>  
+    <a href="https://t.me/GScriptOfficial" target="_blank">Telegram</a>  
+</section>  
+
+<!-- Футер с контактами -->  
+<footer>  
+    <p>Контакты: <a href="mailto:gscriptofficial@mail.ru">gscriptofficial@mail.ru</a></p>  
+</footer>  
+
+<!-- Скрипт для анимации курсора и динамического контента -->  
+<script>  
+    const cursor = document.createElement('div');  
+    cursor.classList.add('cursor');  
+    document.body.appendChild(cursor);  
+
+    document.addEventListener('mousemove', (e) => {  
+        cursor.style.left = e.pageX - 10 + 'px';  
+        cursor.style.top = e.pageY - 10 + 'px';  
+    });  
+
+    // Пример динамической смены кода  
+    const exampleSelect = document.createElement('select');  
+    exampleSelect.innerHTML = `  
+        <option value="spawnEnemy">Создание врага</option>  
+        <option value="movePlayer">Перемещение игрока</option>  
+    `;  
+    document.body.appendChild(exampleSelect);  
+
+    const codeExample = document.createElement('pre');  
+    document.body.appendChild(codeExample);  
+
+    exampleSelect.addEventListener('change', function() {  
+        const example = this.value;  
+        if (example === 'spawnEnemy') {  
+            codeExample.innerHTML = 'spawn(Enemy)';  
+        } else if (example === 'movePlayer') {  
+            codeExample.innerHTML = 'move(player, direction)';  
+        }  
+    });  
+</script>
+
+</body>  
 </html>
